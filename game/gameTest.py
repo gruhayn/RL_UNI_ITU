@@ -23,7 +23,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_setBoard(self):
         board = Board(4, 5)
-        game = Game(None, board)
+        game = Game(board)
 
         self.assertEqual(board, game.get_board())
         self.assertEqual(board.get_width(), game.get_board().get_width())
