@@ -9,8 +9,8 @@ from team.Team import Team
 class MyTestCase(unittest.TestCase):
     def test_createTeamBasedSequentiallyPlayerSelector(self):
         teams = []
-        player_selector = TeamBasedSequentiallyPlayerSelector(teams)
-
+        player_selector = TeamBasedSequentiallyPlayerSelector()
+        player_selector.set_teams(teams)
         self.assertNotEqual(player_selector, None)
         self.assertIsInstance(player_selector, TeamBasedSequentiallyPlayerSelector)
 
@@ -23,8 +23,8 @@ class MyTestCase(unittest.TestCase):
 
         teams = [team1, team2]
 
-        player_selector = TeamBasedSequentiallyPlayerSelector(teams)
-
+        player_selector = TeamBasedSequentiallyPlayerSelector()
+        player_selector.set_teams(teams)
         selectedPlayer = player_selector.select_next_player()
         self.assertEqual(selectedPlayer.get_name(), Player("11").get_name())
 
@@ -42,8 +42,8 @@ class MyTestCase(unittest.TestCase):
 
         teams = [team1, team2, team3]
 
-        player_selector = TeamBasedSequentiallyPlayerSelector(teams)
-
+        player_selector = TeamBasedSequentiallyPlayerSelector()
+        player_selector.set_teams(teams)
         selectedPlayer = player_selector.select_next_player()
         self.assertEqual(selectedPlayer.get_name(), Player("11").get_name())
         selectedPlayer = player_selector.select_next_player()
@@ -88,7 +88,8 @@ class MyTestCase(unittest.TestCase):
 
         teams = [team1, team2, team3]
 
-        player_selector = TeamBasedSequentiallyPlayerSelector(teams)
+        player_selector = TeamBasedSequentiallyPlayerSelector()
+        player_selector.set_teams(teams)
 
         selected_player_order = [
             "11",

@@ -25,8 +25,12 @@ from Utilities.SingleLinkedList.SingleLinkedList import SingleLinkedList
 
 class TeamBasedSequentiallyPlayerSelector(IPlayerSelector):
 
-    def __init__(self, teams: tuple):
-        super().__init__(teams)
+    def __init__(self):
+        super().__init__()
+        self._currentTeamIndex = None
+
+    def set_teams(self, teams: tuple):
+        super().set_teams(teams)
         self._create_single_linked_list_from_teams()
         self._currentTeamIndex = -1
 
