@@ -24,18 +24,19 @@ class Board(object):
     def get_height(self) -> int:
         return self._height
 
-    def print_board(self):
-        for x in range(0, self._width):
-            for y in range(self._height - 1, -1, -1):
-                piece = self._piece_handler.get_piece_at_location(x, y)
-                if piece is not None:
-                    print("x: " + str(x) + " y: " + str(y) + " " + str(type(piece)))
+    def print_board(self, is_print_board_pieces=False):
+        if is_print_board_pieces:
+            for x in range(0, self._width):
+                for y in range(self._height - 1, -1, -1):
+                    piece = self._piece_handler.get_piece_at_location(x, y)
+                    if piece is not None:
+                        print("x: " + str(x) + " y: " + str(y) + " " + str(type(piece)))
 
         for y in range(self._height - 1, -1, -1):
             for x in range(0, self._width):
                 piece = self._piece_handler.get_piece_at_location(x, y)
                 if piece is None:
-                    print("*   " , end="")
+                    print("*   ", end="")
 
                 if isinstance(piece, PlayerBoardPiece.PlayerBoardPiece):
                     print('{: <4}'.format(piece.get_name()), end="")
@@ -44,3 +45,6 @@ class Board(object):
                 elif isinstance(piece, CoinBoardPiece.CoinBoardPiece):
                     print("C   ", end="")
             print()
+
+        print()
+        print()

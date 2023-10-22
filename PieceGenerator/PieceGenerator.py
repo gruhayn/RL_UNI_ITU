@@ -17,7 +17,7 @@ class PieceGenerator(object):
             for player in team.get_players():
                 player_piece = player.get_piece()
                 if player_piece is not None and player_piece.has_locations():
-                    reserved_locations.Add(Location(player_piece.get_x(), player_piece.get_y()))
+                    reserved_locations.append(Location(player_piece.get_x(), player_piece.get_y()))
                 else:
                     players_with_no_location.append(player)
 
@@ -33,14 +33,14 @@ class PieceGenerator(object):
 
         bomb_pieces = []
         for i in range(bomb_count):
-            location = self._get_random_location(reserved_locations, defined_x, defined_y, board)
+            location = self._get_random_location(reserved_locations, None, None, board)
             piece = self._piece_factory.create_bomb_piece(location.get_x(), location.get_y())
             bomb_pieces.append(piece)
             reserved_locations.append(location)
 
         coin_pieces = []
         for i in range(coin_count):
-            location = self._get_random_location(reserved_locations, defined_x, defined_y, board)
+            location = self._get_random_location(reserved_locations, None, None, board)
             piece = self._piece_factory.create_coin_piece(location.get_x(), location.get_y())
             coin_pieces.append(piece)
             reserved_locations.append(location)

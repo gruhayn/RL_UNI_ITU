@@ -1,3 +1,4 @@
+from MechanicFactory import MechanicFactory
 from PieceGenerator import PieceGenerator
 from PlayerSelector import IPlayerSelector
 from board import Board
@@ -12,7 +13,7 @@ class GameCreator(object):
                  bomb_count: int,
                  coin_count: int,
                  player_selector: IPlayerSelector,
-                 piece_generator: PieceGenerator
+                 piece_generator: PieceGenerator,
                  ):
         self._teams = teams
         self._board = board
@@ -23,7 +24,13 @@ class GameCreator(object):
         self._piece_generator = piece_generator
 
     def create_new_game(self):
+        self._set_piece_locations()
 
+        game = Game(self._board, self._player_selector, self._teams)
+
+        return game
+
+    def _set_piece_locations(self):
         self._teams, bomb_pieces, coin_pieces = self._piece_generator.get_pieces_with_locations(self._teams,
                                                                                                 self._bomb_count,
                                                                                                 self._coin_count,
@@ -36,6 +43,3 @@ class GameCreator(object):
         for piece in bomb_pieces + coin_pieces:
             self._board.add_piece(piece)
 
-        game = Game(self._board, self._player_selector, self._teams)
-
-        return game

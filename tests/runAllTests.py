@@ -12,11 +12,14 @@ import PlayerSelector.TeamBasedSequentiallyPlayerSelector.TeamBasedSequentiallyP
 import team.teamTest as teamTest
 from BoardPieceHandler import BoardPieceHandlerTests
 from GameCreator import GameCreatorTests
+from MechanicFactory import MechanicFactoryTests
 from PieceFactory.BasicPieceFactory import BasicPieceFactoryTests
 from PieceGenerator import PieceGeneratorTests
 from boardPiece.BombBoardPiece import BombBoardPieceTests
 from boardPiece.CoinBoardPiece import CoinBoardPieceTests
 from boardPiece.PlayerBoardPiece import PlayerBoardPieceTests
+from mechanic.MoveHorizontalMechanic import MoveHorizontalMechanicTests
+from mechanic.MoveVerticalMechanic import MoveVerticalMechanicTests
 
 # assertions will raise an error.
 # there is no error then nothing will happen
@@ -34,7 +37,10 @@ tests = [
     BasicPieceFactoryTests,
     PieceGeneratorTests,
     GameCreatorTests,
-    BoardPieceHandlerTests
+    BoardPieceHandlerTests,
+    MoveHorizontalMechanicTests,
+    MoveVerticalMechanicTests,
+    MechanicFactoryTests
 ]
 
 for testScenarios in tests:

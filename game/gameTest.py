@@ -1,6 +1,8 @@
 from BoardPieceHandler.BoardPieceHandler import BoardPieceHandler
+from Enums.Enums import Mechanics
 from Exceptions import PieceExistOnLocationOnBoardException
 from GameCreator.GameCreator import GameCreator
+from MechanicFactory.MechanicFactory import MechanicFactory
 from PieceFactory.BasicPieceFactory.BasicPieceFactory import BasicPieceFactory
 from PieceGenerator.PieceGenerator import PieceGenerator
 from PlayerSelector.TeamBasedSequentiallyPlayerSelector.TeamBasedSequentiallyPlayerSelector import \
@@ -71,8 +73,6 @@ def test_select_next_player():
     for i in selected_player_order:
         selected_player = game.select_next_player()
         assert (selected_player.get_name() == i)
-
-    game.print_board()
 
 def test_add_players_on_same_location_added():
     same_x = 1
